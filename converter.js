@@ -47,7 +47,7 @@ async function convertCurrency() {
     try {
         const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`);
         const data = await response.json();
-        const exchangeRate = data.rates[toCurrency];
+        const exchangeRate = data?.rates[toCurrency];
         const convertedAmount = (amount * exchangeRate).toFixed(2);
 
         document.getElementById("result").textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
